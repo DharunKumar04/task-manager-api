@@ -4,6 +4,7 @@ import (
 	"log"
 	"os"
 
+	"github.com/DharunKumar04/task-manager-api/models"
 	"github.com/joho/godotenv"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -26,5 +27,13 @@ func getDbConnectionString() string {
 
 func ConnectPSQLDB() (*gorm.DB, error) {
 	db, err := gorm.Open(postgres.Open(getDbConnectionString()), &gorm.Config{})
-	return db, err
+	if err != nil {
+		return nil, err
+	}
+
+	err = db.AutoMigrate(&models.User{}, &models.Project{}, &models.Task{})
+	if err != nil {
+		return nil, err
+	}
+	return db, nil
 }
