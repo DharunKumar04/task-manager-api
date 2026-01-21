@@ -5,8 +5,10 @@ import (
 )
 
 type Task struct {
-	ID          uint   `gorm:"primaryKey"`
-	ProjectID   uint   `gorm:"foreignKey"`
+	ID          uint `gorm:"primaryKey"`
+	ProjectID   uint `gorm:"foreignKey"`
+	User        User
+	UserID      uint   `gorm:"foreignKey"`
 	Title       string `gorm:"not null"`
 	Description string `gorm:"not null"`
 	Project     Project

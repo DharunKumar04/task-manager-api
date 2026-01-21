@@ -11,6 +11,11 @@ type Handler struct {
 	DB *gorm.DB
 }
 
+type GetUserResponse struct {
+	ID    uint   `json:"id"`
+	Email string `json:"email"`
+}
+
 func NewHandler(db *gorm.DB) *Handler {
 	return &Handler{DB: db}
 }
