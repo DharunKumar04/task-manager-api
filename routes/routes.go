@@ -8,4 +8,6 @@ import (
 func SetupRoutes(router *gin.Engine, h *handlers.Handler) {
 	router.GET("/ping", h.Ping)
 	router.POST("/users", h.CreateUser)
+	router.POST("/projects", h.CreateProject)
+	router.POST("/tasks", h.CreateTask)
 }
