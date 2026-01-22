@@ -9,5 +9,6 @@ type User struct {
 	Email     string `gorm:"unique;not null"`
 	Password  string `gorm:"not null"`
 	CreatedAt time.Time
+	LastLogin time.Time
 	Projects  []Project
 }
